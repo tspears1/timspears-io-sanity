@@ -1,4 +1,4 @@
-import { DocumentIcon, ImageIcon } from '@sanity/icons'
+import { PresentationIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 import slug from '../fields/slug'
@@ -7,7 +7,7 @@ export default defineType({
     name: 'project',
     title: 'Project',
     type: 'document',
-    icon: DocumentIcon,
+    icon: PresentationIcon,
     // Uncomment below to have edits publish automatically as you type
     liveEdit: true,
     fields: [
@@ -48,5 +48,19 @@ export default defineType({
             ],
             validation: (rule) => rule.max(155).required(),
         }),
+        defineField({
+            name: 'projectSkills',
+            title: 'Skills',
+            type: 'array',
+            of: [
+                defineArrayMember({
+                    type: 'reference',
+                    to: { type: 'skill' },
+                    options: {
+                        disableNew: true,
+                    }
+                })
+            ]
+        })
     ]
 })

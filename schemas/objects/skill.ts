@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity'
+import { JoystickIcon } from '@sanity/icons'
 
 export default defineType({
     name: 'skill',
     title: 'Skill',
-    type: 'object',
+    type: 'document',
+    icon: JoystickIcon,
     fields: [
         defineField({
             type: 'string',
