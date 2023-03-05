@@ -3,6 +3,7 @@ import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {RobotIcon} from '@sanity/icons'
 import {media} from 'sanity-plugin-media'
+import { colorInput } from "@sanity/color-input"
 
 import { pageStructure, singletonPlugin } from './plugins/settings'
 
@@ -14,6 +15,7 @@ import page from './schemas/documents/page'
 import project from './schemas/documents/project'
 
 import skill from './schemas/objects/skill'
+import theme from './schemas/objects/theme'
 
 export default defineConfig({
   projectId: 'z0o6cgrz',
@@ -35,6 +37,7 @@ export default defineConfig({
 
       // Objects
       skill,
+      theme,
     ],
   },
 
@@ -45,6 +48,7 @@ export default defineConfig({
     media(),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
     singletonPlugin([home.name, settings.name]),
-    visionTool()
+    visionTool(),
+    colorInput(),
   ],
 })

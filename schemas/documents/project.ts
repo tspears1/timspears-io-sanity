@@ -2,6 +2,7 @@ import { PresentationIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 import slug from '../fields/slug'
+import theme from '../fields/_theme'
 
 export default defineType({
     name: 'project',
@@ -19,6 +20,7 @@ export default defineType({
             validation: (rule) => rule.required(),
         }),
         slug,
+        theme,
         defineField({
             name: 'overview',
             description:

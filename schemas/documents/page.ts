@@ -1,6 +1,7 @@
 import { DocumentsIcon } from '@sanity/icons'
 import { defineType, defineField } from 'sanity'
 import slug from '../fields/slug'
+import theme from '../fields/_theme'
 
 export default defineType({
     name: 'page',
@@ -31,6 +32,7 @@ export default defineType({
             },
             validation: (rule) => rule.required(),
             initialValue: 'simple-template'
-        })
+        }),
+        theme,
     ]
 })
