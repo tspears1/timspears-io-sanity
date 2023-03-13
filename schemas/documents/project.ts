@@ -3,6 +3,7 @@ import { defineArrayMember, defineField, defineType } from 'sanity'
 
 import slug from '../fields/slug'
 import theme from '../fields/_theme'
+import eyebrow from '../fields/_eyebrow'
 
 export default defineType({
     name: 'project',
@@ -20,6 +21,7 @@ export default defineType({
             validation: (rule) => rule.required(),
         }),
         slug,
+        eyebrow,
         theme,
         defineField({
             name: 'overview',

@@ -1,6 +1,7 @@
 import { defineType, defineField } from 'sanity'
 import { HomeIcon } from '@sanity/icons'
 import theme from '../fields/_theme'
+import eyebrow from '../fields/_eyebrow'
 
 export default defineType({
     name: 'home',
@@ -15,6 +16,7 @@ export default defineType({
             type: 'string',
             validation: (rule) => rule.required(),
         }),
+        eyebrow,
         theme,
     ],
 })

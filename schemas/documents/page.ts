@@ -2,6 +2,7 @@ import { DocumentsIcon } from '@sanity/icons'
 import { defineType, defineField } from 'sanity'
 import slug from '../fields/slug'
 import theme from '../fields/_theme'
+import eyebrow from '../fields/_eyebrow'
 
 export default defineType({
     name: 'page',
@@ -17,6 +18,7 @@ export default defineType({
             validation: (rule) => rule.required(),
         }),
         slug,
+        eyebrow,
         defineField({
             name: 'pageTemplate',
             title: 'Page Template',
