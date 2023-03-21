@@ -10,19 +10,35 @@ export default defineType({
     title: 'Project',
     type: 'document',
     icon: PresentationIcon,
-    // Uncomment below to have edits publish automatically as you type
     liveEdit: true,
+    groups: [
+        {
+            name: 'basics',
+            title: 'Basics',
+            default: true,
+        },
+        {
+            name: 'card',
+            title: 'Project Card',
+        },
+        {
+            name: 'content',
+            title: 'Content',
+        }
+
+    ],
     fields: [
         defineField({
             name: 'title',
             description: 'This field is the title of your project.',
             title: 'Title',
             type: 'string',
-            validation: (rule) => rule.required(),
+            validation: Rule => Rule.required(),
+            group: 'basics',
         }),
-        slug,
-        eyebrow,
-        theme,
+        { ...slug, group: 'basics' },
+        { ...eyebrow, group: 'basics' },
+        { ...theme, group: 'basics' },
         defineField({
             name: 'overview',
             description:
@@ -50,7 +66,8 @@ export default defineType({
                     type: 'block',
                 }),
             ],
-            validation: (rule) => rule.max(155).required(),
+            validation: (rule) => rule.max(155),
+            group: 'basics',
         }),
         defineField({
             name: 'projectSkills',
@@ -64,7 +81,34 @@ export default defineType({
                         disableNew: true,
                     }
                 })
-            ]
+            ],
+            group: 'basics',
+        }),
+
+        // CARD GROUP =======================================================
+        defineField({
+            name: 'cardTitle',
+            title: 'Card Title Override',
+            description: '(Optional.) Will use Title if left blank',
+            type: 'string',
+            validation: (rule) => rule.max(24),
+            group: 'card',
+        }),
+        defineField({
+            name: 'cardEyebrow',
+            title: 'Card Eyebrow Override',
+            description: '(Optional.) Will use Eyebrow if left blank',
+            type: 'string',
+            validation: (rule) => rule.max(45),
+            group: 'card',
+        }),
+        defineField({
+            name: 'cardImage',
+            title: 'Card Image',
+            description: 'Recommended size 1600 x 1600',
+            type: 'image',
+            validation: (rule) => rule.required(),
+            group: 'card',
         })
     ]
 })

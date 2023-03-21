@@ -3,6 +3,7 @@ import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {RobotIcon} from '@sanity/icons'
 import {media} from 'sanity-plugin-media'
+import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash"
 import { colorInput } from "@sanity/color-input"
 
 import { pageStructure, singletonPlugin } from './plugins/settings'
@@ -50,5 +51,6 @@ export default defineConfig({
     singletonPlugin([home.name, settings.name]),
     visionTool(),
     colorInput(),
+    unsplashImageAsset(),
   ],
 })
