@@ -24,7 +24,11 @@ export default defineType({
         {
             name: 'content',
             title: 'Content',
-        }
+        },
+        {
+            name: 'seo',
+            title: 'SEO',
+        },
 
     ],
     fields: [
@@ -37,38 +41,22 @@ export default defineType({
             group: 'basics',
         }),
         { ...slug, group: 'basics' },
+        {
+            name: 'client',
+            title: 'Client',
+            type: 'string',
+            validation: Rule => Rule.required(),
+            group: 'basics',
+        },
+        {
+            name: 'year',
+            title: 'Year',
+            type: 'string',
+            validation: Rule => Rule.required(),
+            group: 'basics',
+        },
         { ...eyebrow, group: 'basics' },
         { ...theme, group: 'basics' },
-        defineField({
-            name: 'overview',
-            description:
-                'Used both for the <meta> description tag for SEO, and project subheader.',
-            title: 'Overview',
-            type: 'array',
-            of: [
-                // Paragraphs
-                defineArrayMember({
-                    lists: [],
-                    marks: {
-                        annotations: [],
-                        decorators: [
-                        {
-                            title: 'Italic',
-                            value: 'em',
-                        },
-                        {
-                            title: 'Strong',
-                            value: 'strong',
-                        },
-                        ],
-                    },
-                    styles: [],
-                    type: 'block',
-                }),
-            ],
-            validation: (rule) => rule.max(155),
-            group: 'basics',
-        }),
         defineField({
             name: 'projectSkills',
             title: 'Skills',
@@ -103,12 +91,55 @@ export default defineType({
             group: 'card',
         }),
         defineField({
+            name: 'awarded',
+            title: 'Has Awards?',
+            type: 'boolean',
+            initialValue: false,
+            group: 'card',
+        }),
+        defineField({
             name: 'cardImage',
             title: 'Card Image',
             description: 'Recommended size 1600 x 1600',
             type: 'image',
             validation: (rule) => rule.required(),
             group: 'card',
-        })
+        }),
+
+
+        // Content Group =======================================
+
+
+        // SEO Group ===========================================
+        defineField({
+            name: 'overview',
+            description:
+                'Used both for the <meta> description tag for SEO, and project subheader.',
+            title: 'Overview',
+            type: 'array',
+            of: [
+                // Paragraphs
+                defineArrayMember({
+                    lists: [],
+                    marks: {
+                        annotations: [],
+                        decorators: [
+                        {
+                            title: 'Italic',
+                            value: 'em',
+                        },
+                        {
+                            title: 'Strong',
+                            value: 'strong',
+                        },
+                        ],
+                    },
+                    styles: [],
+                    type: 'block',
+                }),
+            ],
+            validation: (rule) => rule.max(155),
+            group: 'seo',
+        }),
     ]
 })

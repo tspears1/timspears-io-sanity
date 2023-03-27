@@ -15,8 +15,9 @@ import settings from "./schemas/singletons/settings"
 import page from './schemas/documents/page'
 import project from './schemas/documents/project'
 
-import skill from './schemas/objects/skill'
-import theme from './schemas/objects/theme'
+import award from './schemas/taxonomy/award'
+import skill from './schemas/taxonomy/skill'
+import theme from './schemas/taxonomy/theme'
 
 export default defineConfig({
   projectId: 'z0o6cgrz',
@@ -37,6 +38,7 @@ export default defineConfig({
       project,
 
       // Objects
+      award,
       skill,
       theme,
     ],
