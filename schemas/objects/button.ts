@@ -16,7 +16,7 @@ export default defineType({
             name: 'url',
             title: 'URL',
             placeholder: 'https://...',
-            validation: Rule => Rule.required(),
+            validation: Rule => Rule.required().uri(),
         },
         {
             type: 'boolean',

@@ -4,6 +4,11 @@ import { defineArrayMember, defineField, defineType } from 'sanity'
 import slug from '../fields/slug'
 import theme from '../fields/_theme'
 import eyebrow from '../fields/_eyebrow'
+import introBlock from '../blocks/introBlock'
+import textBlock from '../blocks/textBlock'
+import textHeadingBlock from '../blocks/textHeadingBlock'
+import imageBlock from '../blocks/imageBlock'
+import awardsBlock from '../blocks/awardsBlock'
 
 export default defineType({
     name: 'project',
@@ -108,7 +113,19 @@ export default defineType({
 
 
         // Content Group =======================================
-
+        defineField({
+            name: 'contentDesigner',
+            title: 'Content Designer',
+            type: 'array',
+            of: [
+                introBlock,
+                //textHeadingBlock,
+                textBlock,
+                //imageBlock,
+                //awardsBlock,
+            ],
+            group: 'content',
+        }),
 
         // SEO Group ===========================================
         defineField({
