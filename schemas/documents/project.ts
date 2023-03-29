@@ -122,7 +122,7 @@ export default defineType({
                 //textHeadingBlock,
                 textBlock,
                 //imageBlock,
-                //awardsBlock,
+                awardsBlock,
             ],
             group: 'content',
         }),
