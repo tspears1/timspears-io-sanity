@@ -4,6 +4,9 @@ export default defineType({
     name: 'button',
     title: 'Button',
     type: 'object'  ,
+    options: {
+        collapsible: true,
+    },
     fields: [
         {
             type: 'string',

@@ -1,17 +1,19 @@
 import { defineType } from 'sanity'
 import {IceCreamIcon} from '@sanity/icons'
+import sectionHeading from '../objects/sectionHeading'
 
 export default defineType({
     type: 'object',
     name: 'awardsBlock',
     title: 'Awards Block',
     icon: IceCreamIcon,
-    fields: [
-        {
-            type: 'string',
-            name: 'sectionTitle',
-            title: 'Section Title',
+    preview: {
+        select: {
+            title: 'sectionHeading.text'
         },
+    },
+    fields: [
+        sectionHeading,
         {
             type: 'array',
             name: 'awardsList',

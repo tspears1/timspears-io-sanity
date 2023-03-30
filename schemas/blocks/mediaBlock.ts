@@ -1,24 +1,26 @@
 import { defineType, defineArrayMember } from 'sanity'
 import {ImagesIcon} from '@sanity/icons'
+import sectionHeading from '../objects/sectionHeading'
 
 export default defineType({
     type: 'object',
     name: 'mediaBlock',
     title: 'Media Block',
     icon: ImagesIcon,
+    preview: {
+        select: {
+            title: 'sectionHeading.text',
+            media: 'mediaGroup',
+        },
+        prepare: ({ title, media }) => {
+            return {
+                title: `${title ?? '[ Media Block ]'} ( ${media.length} )`,
+                media: media[0].media
+            }
+        }
+    },
     fields: [
-        {
-            type: 'string',
-            name: 'blockTitle',
-            title: 'Block Title',
-            readOnly: true,
-            initialValue: () => 'Media Block',
-        },
-        {
-            type: 'string',
-            name: 'sectionTitle',
-            title: 'Section Title',
-        },
+        sectionHeading,
         {
             name: 'mediaGroup',
             title: 'Media Group',
@@ -55,8 +57,6 @@ export default defineType({
                                 direction: 'horizontal',
                             },
                             initialValue: 'auto',
-                            placeholder: 'Select a spacing option.',
-                            validation: Rule => Rule.required()
                         }
                     ]
                 })

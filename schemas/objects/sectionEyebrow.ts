@@ -1,9 +1,12 @@
 import { defineType } from 'sanity'
 
 export default defineType({
-    name: 'projectEyebrow',
+    name: 'sectionEyebrow',
     title: 'Eyebrow',
     type: 'object',
+    options: {
+        collapsible: true,
+    },
     fields: [
         {
             type: 'string',

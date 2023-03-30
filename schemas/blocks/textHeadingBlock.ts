@@ -1,26 +1,31 @@
 import { defineType } from 'sanity'
 import {BlockContentIcon} from '@sanity/icons'
-import projectEyebrow from '../objects/projectEyebrow'
+import sectionEyebrow from '../objects/sectionEyebrow'
 import contentFull from '../objects/contentFull'
+import sectionHeading from '../objects/sectionHeading'
 
 export default defineType({
     type: 'object',
     name: 'textHeadingBlock',
     title: 'Text w/ Heading Block',
     icon: BlockContentIcon,
+    preview: {
+        select: {
+            title: 'sectionHeading.text'
+        },
+        prepare: ({ title }) => {
+            return {
+                title: `${title ?? '[ Text w/Heading Block ]' }`,
+            }
+        }
+    },
     groups: [
         { name: 'block', title: 'Block', default: true },
         { name: 'settings', title: 'Settings' },
     ],
     fields: [
-        { ...projectEyebrow, group: 'block' },
-        {
-            type: 'string',
-            name: 'title',
-            title: 'Heading',
-            validation: Rule => Rule.required(),
-            group: 'block',
-        },
+        { ...sectionEyebrow, group: 'block' },
+        { ...sectionHeading, group: 'block' },
         { ...contentFull, group: 'block' },
         {
             type: 'boolean',

@@ -9,6 +9,7 @@ export default defineType({
     of: [
         defineArrayMember({
             type: 'block',
+            name: 'blocks',
             marks: {
                 annotations: [
                     internalLink,

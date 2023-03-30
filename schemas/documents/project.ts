@@ -9,6 +9,7 @@ import textBlock from '../blocks/textBlock'
 import textHeadingBlock from '../blocks/textHeadingBlock'
 import mediaBlock from '../blocks/mediaBlock'
 import awardsBlock from '../blocks/awardsBlock'
+import galleryBlock from '../blocks/galleryBlock'
 
 export default defineType({
     name: 'project',
@@ -122,6 +123,7 @@ export default defineType({
                 textHeadingBlock,
                 textBlock,
                 mediaBlock,
+                galleryBlock,
                 awardsBlock,
             ],
             group: 'content',
