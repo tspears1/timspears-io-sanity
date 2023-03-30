@@ -25,7 +25,7 @@ export default defineType({
                 disableNew: true,
             },
             validation: Rule => Rule.max(1),
-        }
+        },
 
     ]
 })

@@ -18,7 +18,9 @@ export default defineType({
             }
         }),
         defineArrayMember({
-            type: 'image'
+            type: 'image',
+            name: 'contentImage',
+            title: 'Image',
         })
     ]
 })

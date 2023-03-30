@@ -19,7 +19,7 @@ export default defineType({
             of: [
                 {
                     type: 'object',
-                    name: 'award',
+                    name: 'awardItem',
                     title: 'Award',
                     icon: IceCreamIcon,
                     fields: [

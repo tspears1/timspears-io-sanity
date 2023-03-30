@@ -7,7 +7,7 @@ import eyebrow from '../fields/_eyebrow'
 import introBlock from '../blocks/introBlock'
 import textBlock from '../blocks/textBlock'
 import textHeadingBlock from '../blocks/textHeadingBlock'
-import imageBlock from '../blocks/imageBlock'
+import mediaBlock from '../blocks/mediaBlock'
 import awardsBlock from '../blocks/awardsBlock'
 
 export default defineType({
@@ -119,9 +119,9 @@ export default defineType({
             type: 'array',
             of: [
                 introBlock,
-                //textHeadingBlock,
+                textHeadingBlock,
                 textBlock,
-                //imageBlock,
+                mediaBlock,
                 awardsBlock,
             ],
             group: 'content',
