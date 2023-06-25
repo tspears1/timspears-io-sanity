@@ -10,6 +10,7 @@ import textHeadingBlock from '../blocks/textHeadingBlock'
 import mediaBlock from '../blocks/mediaBlock'
 import awardsBlock from '../blocks/awardsBlock'
 import galleryBlock from '../blocks/galleryBlock'
+import featuredImage from '../objects/featuredImage'
 
 export default defineType({
     name: 'project',
@@ -63,6 +64,7 @@ export default defineType({
         },
         { ...eyebrow, group: 'basics' },
         { ...theme, group: 'basics' },
+        { ...featuredImage, group: 'basics' },
         defineField({
             name: 'projectSkills',
             title: 'Skills',
@@ -106,9 +108,8 @@ export default defineType({
         defineField({
             name: 'cardImage',
             title: 'Card Image',
-            description: 'Recommended size 1600 x 1600',
+            description: '(Optional.) Will use Featured Image if left blank.Recommended size 1600 x 1600',
             type: 'image',
-            validation: (rule) => rule.required(),
             group: 'card',
         }),
 
