@@ -20,14 +20,27 @@ export default defineType({
             }
         }
     },
+    groups: [
+        { name: 'block', title: 'Block', default: true },
+        { name: 'settings', title: 'Settings' },
+    ],
     fields: [
-        sectionHeading,
+        { ...sectionHeading, group: 'block' },
         {
             type: 'boolean',
             name: 'spotlightText',
             title: 'Spotlight Text?',
             initialValue: false,
+            group: 'block',
         },
-        contentText,
+        { ...contentText, group: 'block' },
+        {
+            type: 'boolean',
+            name: 'invertTheme',
+            title: 'Invert Theme',
+            description: 'Select to switch to darker background with lighter text.',
+            initialValue: false,
+            group: 'settings',
+        }
     ]
 })

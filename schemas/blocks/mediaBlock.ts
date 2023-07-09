@@ -1,7 +1,7 @@
 import { defineType, defineArrayMember } from 'sanity'
 import {ImagesIcon} from '@sanity/icons'
 import sectionHeading from '../objects/sectionHeading'
-
+import { title as rTitle } from 'radash'
 export default defineType({
     type: 'object',
     name: 'mediaBlock',
@@ -30,6 +30,19 @@ export default defineType({
                     type: 'object',
                     name: 'mediaItem',
                     title: 'Media',
+                    preview: {
+                        select: {
+                            title: 'caption',
+                            size: 'spacing',
+                            media: 'media',
+                        },
+                        prepare: ({ title, media, size }) => {
+                            return {
+                                title: `[ ${rTitle(size)} ] ${title ?? '{ Untitled }'}`,
+                                media: media
+                            }
+                        }
+                    },
                     fields: [
                         {
                             type: 'image',
