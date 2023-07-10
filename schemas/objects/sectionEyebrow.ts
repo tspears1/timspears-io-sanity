@@ -1,4 +1,5 @@
 import { defineType } from 'sanity'
+import ListOverrideField from '../../components/ListOverrideField'
 
 export default defineType({
     name: 'sectionEyebrow',
@@ -19,16 +20,33 @@ export default defineType({
             name: 'digit',
             title: 'Digit (optional)',
         },
+        // {
+        //     type: 'reference',
+        //     name: 'icon',
+        //     title: 'Skill Icon',
+        //     to: { type: 'skill' },
+        //     options: {
+        //         disableNew: true,
+        //     },
+        // },
         {
-            type: 'reference',
+            type: 'string',
             name: 'icon',
-            title: 'Skill Icon',
-            to: { type: 'skill' },
-            options: {
-                disableNew: true,
+            title: 'Icon',
+            components: {
+                input: ListOverrideField,
             },
-            validation: Rule => Rule.max(1),
-        },
+            options: {
+                listGenerator: ({ document }) => {
+                    console.log(document)
+                    // const skills = (document.skills || []).map((skill) => {
+                    //     return { title: skill.title, slug: skill.slug }
+                    // })
+                    // return skills
+                }
+            },
+            layout: 'radio',
+        }
 
     ]
 })

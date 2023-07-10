@@ -57,6 +57,20 @@ export default defineType({
                         },
                         {
                             type: 'string',
+                            name: 'layout',
+                            title: 'Layout',
+                            options: {
+                                list: [
+                                    { title: 'Grid', value: 'grid' },
+                                    { title: 'Full Viewport', value: 'full' },
+                                ],
+                                layout: 'radio',
+                                direction: 'horizontal',
+                            },
+                            initialValue: 'grid',
+                        },
+                        {
+                            type: 'string',
                             name: 'spacing',
                             title: 'Spacing',
                             options: {
@@ -70,6 +84,7 @@ export default defineType({
                                 direction: 'horizontal',
                             },
                             initialValue: 'auto',
+                            hidden: ({ parent }) => parent?.layout === 'full',
                         }
                     ]
                 })
