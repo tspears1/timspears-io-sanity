@@ -9,15 +9,9 @@ import { colorInput } from "@sanity/color-input"
 import { pageStructure, singletonPlugin } from './plugins/settings'
 
 // schemas ==============
-import home from "./schemas/singletons/home"
-import settings from "./schemas/singletons/settings"
-
-import page from './schemas/documents/page'
-import project from './schemas/documents/project'
-
-import award from './schemas/taxonomy/award'
-import skill from './schemas/taxonomy/skill'
-import theme from './schemas/taxonomy/theme'
+import { homeType as home} from "./schemas/singletons/home"
+import { settingsType as settings} from "./schemas/singletons/settings"
+import { schemaTypes } from './schemas'
 
 export default defineConfig({
   projectId: 'z0o6cgrz',
@@ -28,20 +22,7 @@ export default defineConfig({
   icon: RobotIcon,
 
   schema: {
-    types: [
-      // Singletons
-      home,
-      settings,
-
-      // Documents
-      page,
-      project,
-
-      // Objects
-      award,
-      skill,
-      theme,
-    ],
+    types: schemaTypes,
   },
 
   plugins: [

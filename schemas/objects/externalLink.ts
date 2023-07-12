@@ -1,7 +1,7 @@
 import { defineType } from 'sanity'
 import { LaunchIcon } from '@sanity/icons'
 
-export default defineType({
+export const externalLinkType = defineType({
     name: 'link',
     type: 'object',
     title: 'External link',

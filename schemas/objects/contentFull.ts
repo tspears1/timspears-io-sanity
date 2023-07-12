@@ -1,9 +1,9 @@
-import { defineType, defineArrayMember } from 'sanity'
-import externalLink from './externalLink'
-import internalLink from './internalLink'
+import { defineType, defineArrayMember, defineField } from 'sanity'
+import {externalLinkType as externalLink} from './externalLink'
+import {internalLinkType as internalLink} from './internalLink'
 
 
-export default defineType({
+export const contentFullType = defineType({
     name: 'contentFull',
     title: 'Content',
     type: 'array',
@@ -12,8 +12,8 @@ export default defineType({
             type: 'block',
             marks: {
                 annotations: [
-                    internalLink,
-                    externalLink,
+                    defineField(internalLink),
+                    defineField(externalLink),
                 ]
             }
         }),

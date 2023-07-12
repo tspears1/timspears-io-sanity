@@ -1,7 +1,7 @@
 import { defineType } from 'sanity'
 import { LinkIcon } from '@sanity/icons'
 
-export default defineType({
+export const internalLinkType = defineType({
     name: 'internalLink',
     type: 'object',
     title: 'Internal link',

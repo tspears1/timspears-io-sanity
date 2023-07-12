@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 import { IceCreamIcon } from '@sanity/icons'
 import slug from '../fields/slug'
 
-export default defineType({
+export const awardType = defineType({
     name: 'award',
     title: 'Award',
     type: 'document',

@@ -1,8 +1,8 @@
-import { defineType } from 'sanity'
+import { defineType, defineField } from 'sanity'
 import {IceCreamIcon} from '@sanity/icons'
-import sectionHeading from '../objects/sectionHeading'
+import { sectionHeadingType as sectionHeading } from '../objects/sectionHeading'
 
-export default defineType({
+export const awardsBlockType = defineType({
     type: 'object',
     name: 'awardsBlock',
     title: 'Awards Block',
@@ -13,7 +13,7 @@ export default defineType({
         },
     },
     fields: [
-        sectionHeading,
+        defineField(sectionHeading),
         {
             type: 'array',
             name: 'awardsList',

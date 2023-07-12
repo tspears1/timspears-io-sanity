@@ -1,12 +1,12 @@
-import { defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 import {InfoOutlineIcon} from '@sanity/icons'
 
-import sectionEyebrow from '../objects/sectionEyebrow'
-import button from '../objects/button'
-import contentSimple from '../objects/contentSimple'
-import sectionHeading from '../objects/sectionHeading'
+import {sectionEyebrowType as sectionEyebrow} from '../objects/sectionEyebrow'
+import {buttonType as button} from '../objects/button'
+import {contentSimpleType as contentSimple} from '../objects/contentSimple'
+import {sectionHeadingType as sectionHeading} from '../objects/sectionHeading'
 
-export default defineType({
+export const introBlockType = defineType({
     name: 'projectIntro',
     title: 'Project Intro',
     type: 'object',
@@ -21,10 +21,10 @@ export default defineType({
         { name: 'settings', title: 'Settings' },
     ],
     fields: [
-        { ...sectionEyebrow, group: 'block' },
-        { ...sectionHeading, group: 'block' },
-        { ...button, group: 'block'},
-        { ...contentSimple, group: 'block' },
+        defineField({ ...sectionEyebrow, group: 'block' }),
+        defineField({ ...sectionHeading, group: 'block' }),
+        defineField({ ...button, group: 'block'}),
+        defineField({ ...contentSimple, group: 'block' }),
         {
             type: 'boolean',
             name: 'alignmentX',

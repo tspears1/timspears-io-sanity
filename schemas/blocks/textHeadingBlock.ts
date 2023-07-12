@@ -1,10 +1,10 @@
-import { defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 import {BlockContentIcon} from '@sanity/icons'
-import sectionEyebrow from '../objects/sectionEyebrow'
-import contentFull from '../objects/contentFull'
-import sectionHeading from '../objects/sectionHeading'
+import {sectionEyebrowType as sectionEyebrow} from '../objects/sectionEyebrow'
+import {contentFullType as contentFull} from '../objects/contentFull'
+import {sectionHeadingType as sectionHeading} from '../objects/sectionHeading'
 
-export default defineType({
+export const textHeadingBlockType = defineType({
     type: 'object',
     name: 'textHeadingBlock',
     title: 'Text w/ Heading Block',
@@ -24,9 +24,9 @@ export default defineType({
         { name: 'settings', title: 'Settings' },
     ],
     fields: [
-        { ...sectionEyebrow, group: 'block' },
-        { ...sectionHeading, group: 'block' },
-        { ...contentFull, group: 'block' },
+        defineField({ ...sectionEyebrow, group: 'block' }),
+        defineField({ ...sectionHeading, group: 'block' }),
+        defineField({ ...contentFull, group: 'block' }),
         {
             type: 'boolean',
             name: 'alignmentX',

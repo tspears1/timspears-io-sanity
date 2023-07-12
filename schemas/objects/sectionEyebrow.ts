@@ -1,7 +1,7 @@
 import { defineType } from 'sanity'
 import { skills } from '../../constants/skills'
 
-export default defineType({
+export const sectionEyebrowType = defineType({
     name: 'sectionEyebrow',
     title: 'Eyebrow',
     type: 'object',

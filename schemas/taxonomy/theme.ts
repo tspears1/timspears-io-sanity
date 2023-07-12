@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 import { LemonIcon } from '@sanity/icons'
 import slug from '../fields/slug'
 
-export default defineType({
+export const themeType = defineType({
     name: 'theme',
     title: 'Theme',
     type: 'document',

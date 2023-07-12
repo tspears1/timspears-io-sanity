@@ -5,7 +5,7 @@ import theme from '../fields/_theme'
 import eyebrow from '../fields/_eyebrow'
 import workTemplate from '../templates/_work-index'
 
-export default defineType({
+export const pageType = defineType({
     name: 'page',
     title: 'Page',
     type: 'document',

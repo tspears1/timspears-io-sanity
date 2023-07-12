@@ -4,15 +4,15 @@ import { defineArrayMember, defineField, defineType } from 'sanity'
 import slug from '../fields/slug'
 import theme from '../fields/_theme'
 import eyebrow from '../fields/_eyebrow'
-import introBlock from '../blocks/introBlock'
-import textBlock from '../blocks/textBlock'
-import textHeadingBlock from '../blocks/textHeadingBlock'
-import mediaBlock from '../blocks/mediaBlock'
-import awardsBlock from '../blocks/awardsBlock'
-import galleryBlock from '../blocks/galleryBlock'
-import featuredImage from '../objects/featuredImage'
+import {introBlockType as introBlock} from '../blocks/introBlock'
+import {textBlockType as textBlock} from '../blocks/textBlock'
+import {textHeadingBlockType as textHeadingBlock} from '../blocks/textHeadingBlock'
+import {mediaBlockType as mediaBlock} from '../blocks/mediaBlock'
+import {awardsBlockType as awardsBlock} from '../blocks/awardsBlock'
+import {galleryBlockType as galleryBlock} from '../blocks/galleryBlock'
+import {featuredImageType as featuredImage} from '../objects/featuredImage'
 
-export default defineType({
+export const projectType = defineType({
     name: 'project',
     title: 'Project',
     type: 'document',
@@ -64,7 +64,7 @@ export default defineType({
         },
         { ...eyebrow, group: 'basics' },
         { ...theme, group: 'basics' },
-        { ...featuredImage, group: 'basics' },
+        defineField({ ...featuredImage, group: 'basics' }),
         defineField({
             name: 'projectSkills',
             title: 'Skills',
@@ -120,12 +120,12 @@ export default defineType({
             title: 'Content Designer',
             type: 'array',
             of: [
-                introBlock,
-                textHeadingBlock,
-                textBlock,
-                mediaBlock,
-                galleryBlock,
-                awardsBlock,
+                defineArrayMember(introBlock),
+                defineArrayMember(textHeadingBlock),
+                defineArrayMember(textBlock),
+                defineArrayMember(mediaBlock),
+                defineArrayMember(galleryBlock),
+                defineArrayMember(awardsBlock),
             ],
             group: 'content',
         }),

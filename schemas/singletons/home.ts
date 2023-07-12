@@ -3,7 +3,7 @@ import { HomeIcon } from '@sanity/icons'
 import theme from '../fields/_theme'
 import eyebrow from '../fields/_eyebrow'
 
-export default defineType({
+export const homeType = defineType({
     name: 'home',
     title: 'Homepage',
     type: 'document',

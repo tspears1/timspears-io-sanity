@@ -1,8 +1,9 @@
-import { defineType, defineArrayMember } from 'sanity'
+import { defineType, defineArrayMember, defineField } from 'sanity'
 import {ImagesIcon} from '@sanity/icons'
-import sectionHeading from '../objects/sectionHeading'
+import {sectionHeadingType as sectionHeading} from '../objects/sectionHeading'
 import { title as rTitle } from 'radash'
-export default defineType({
+
+export const mediaBlockType = defineType({
     type: 'object',
     name: 'mediaBlock',
     title: 'Media Block',
@@ -20,7 +21,7 @@ export default defineType({
         }
     },
     fields: [
-        sectionHeading,
+        defineField(sectionHeading),
         {
             name: 'mediaGroup',
             title: 'Media Group',

@@ -1,6 +1,6 @@
 import { defineType, defineField } from 'sanity'
 
-export default defineType({
+export const featuredImageType = defineType({
     name: 'featuredImage',
     title: 'Featured Image',
     type: 'object',

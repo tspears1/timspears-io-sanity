@@ -1,8 +1,8 @@
-import { defineType, defineArrayMember } from "sanity"
-import sectionHeading from "../objects/sectionHeading"
+import { defineType, defineField, defineArrayMember } from "sanity"
+import { sectionHeadingType as sectionHeading } from "../objects/sectionHeading"
 import {BlockElementIcon} from '@sanity/icons'
 
-export default defineType({
+export const galleryBlockType = defineType({
     type: 'object',
     name: 'galleryBlock',
     title: 'Gallery Block',
@@ -20,7 +20,7 @@ export default defineType({
         }
     },
     fields: [
-        { ...sectionHeading, options: { collapsed: true } },
+        defineField({ ...sectionHeading, options: { collapsed: true } }),
         {
             name: 'mediaGroup',
             title: 'Media Group',

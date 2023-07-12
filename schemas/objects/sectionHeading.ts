@@ -1,6 +1,6 @@
 import { defineType } from 'sanity'
 
-export default defineType({
+export const sectionHeadingType = defineType({
     name: 'sectionHeading',
     title: 'Heading',
     type: 'object',

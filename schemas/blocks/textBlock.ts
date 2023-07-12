@@ -1,11 +1,11 @@
-import { defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 import {BlockquoteIcon} from '@sanity/icons'
 
-import contentText from '../objects/contentText'
-import sectionHeading from '../objects/sectionHeading'
+import {contentTextType as contentText} from '../objects/contentText'
+import {sectionHeadingType as sectionHeading} from '../objects/sectionHeading'
 
 
-export default defineType({
+export const textBlockType = defineType({
     type: 'object',
     name: 'textBlock',
     title: 'Text Block',
@@ -25,7 +25,7 @@ export default defineType({
         { name: 'settings', title: 'Settings' },
     ],
     fields: [
-        { ...sectionHeading, group: 'block' },
+        defineField({ ...sectionHeading, group: 'block' }),
         {
             type: 'boolean',
             name: 'spotlightText',
@@ -33,7 +33,7 @@ export default defineType({
             initialValue: false,
             group: 'block',
         },
-        { ...contentText, group: 'block' },
+        defineField({ ...contentText, group: 'block' }),
         {
             type: 'boolean',
             name: 'invertTheme',
