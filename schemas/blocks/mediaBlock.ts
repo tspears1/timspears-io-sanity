@@ -23,6 +23,20 @@ export const mediaBlockType = defineType({
     fields: [
         defineField(sectionHeading),
         {
+            type: 'string',
+            name: 'layout',
+            title: 'Media Block Layout',
+            options: {
+                list: [
+                    { title: 'Grid', value: 'grid' },
+                    { title: 'Full Viewport', value: 'full' },
+                ],
+                layout: 'radio',
+                direction: 'horizontal',
+            },
+            initialValue: 'grid',
+        },
+        {
             name: 'mediaGroup',
             title: 'Media Group',
             type: 'array',
@@ -33,60 +47,73 @@ export const mediaBlockType = defineType({
                     title: 'Media',
                     preview: {
                         select: {
-                            title: 'caption',
                             size: 'spacing',
                             media: 'media',
                         },
-                        prepare: ({ title, media, size }) => {
+                        prepare: ({ media, size }) => {
                             return {
-                                title: `[ ${rTitle(size)} ] ${title ?? '{ Untitled }'}`,
+                                title: `[ ${rTitle(size)} ] ${media.caption ?? '{ Untitled }'}`,
                                 media: media
                             }
                         }
                     },
                     fields: [
-                        {
+                        defineField({
                             type: 'image',
                             name: 'media',
                             title: 'Media File',
+                            options: {
+                                hotspot: true,
+                            },
+                            fields: [
+                                {
+                                    name: 'caption',
+                                    type: 'string',
+                                    title: 'Caption',
+                                },
+                                {
+                                    name: 'attribution',
+                                    type: 'string',
+                                    title: 'Attribution',
+                                }
+                            ],
                             validation: Rule => Rule.required()
-                        },
-                        {
+                        }),
+                        defineField({
                             type: 'string',
-                            name: 'caption',
-                            title: 'Caption',
-                        },
-                        {
-                            type: 'string',
-                            name: 'layout',
-                            title: 'Layout',
+                            name: 'ratio',
+                            title: 'Aspect Ratio',
+                            description: 'Only applies to grid layout.',
                             options: {
                                 list: [
-                                    { title: 'Grid', value: 'grid' },
-                                    { title: 'Full Viewport', value: 'full' },
+                                    { title: '1:1', value: '1:1' },
+                                    { title: '4:3', value: '4:3' },
+                                    { title: '16:9', value: '16:9' },
+                                    { title: '21:9', value: '21:9' },
+                                    { title: 'Contain', value: 'null' },
                                 ],
                                 layout: 'radio',
                                 direction: 'horizontal',
                             },
-                            initialValue: 'grid',
-                        },
-                        {
+                            initialValue: '16/9',
+                        }),
+                        defineField({
                             type: 'string',
                             name: 'spacing',
-                            title: 'Spacing',
+                            title: 'Grid Spacing',
+                            description: 'Only applies to grid layout.',
                             options: {
                                 list: [
                                     { title: 'Auto', value: 'auto' },
-                                    { title: 'Full', value: 'full' },
-                                    { title: 'Half', value: 'half' },
-                                    { title: 'Third', value: 'third' },
+                                    { title: 'Full', value: 'full' }, // 1
+                                    { title: 'Half', value: 'half' }, // 2
+                                    { title: 'Third', value: 'third' }, // 3
                                 ],
                                 layout: 'radio',
                                 direction: 'horizontal',
                             },
                             initialValue: 'auto',
-                            hidden: ({ parent }) => parent?.layout === 'full',
-                        }
+                        })
                     ]
                 })
             ]
