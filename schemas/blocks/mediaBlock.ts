@@ -48,11 +48,12 @@ export const mediaBlockType = defineType({
                     preview: {
                         select: {
                             size: 'spacing',
+                            ratio: 'ratio',
                             media: 'media',
                         },
-                        prepare: ({ media, size }) => {
+                        prepare: ({ media, size, ratio }) => {
                             return {
-                                title: `[ ${rTitle(size)} ] ${media.caption ?? '{ Untitled }'}`,
+                                title: `[ ${rTitle(size)} ] [ ${rTitle(ratio)}] ${media.caption ?? '{ Untitled }'}`,
                                 media: media
                             }
                         }
