@@ -52,8 +52,9 @@ export const mediaBlockType = defineType({
                             media: 'media',
                         },
                         prepare: ({ media, size, ratio }) => {
+                            const caption = media.caption ?? '{ Untitled }'
                             return {
-                                title: `[ ${rTitle(size)} ] [ ${rTitle(ratio)}] ${media.caption ?? '{ Untitled }'}`,
+                                title: `[ ${rTitle(size)} ] [ ${rTitle(ratio)}] ${caption}`,
                                 media: media
                             }
                         }

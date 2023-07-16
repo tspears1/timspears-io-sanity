@@ -15,7 +15,7 @@ export const galleryBlockType = defineType({
         prepare: ({ title, media }) => {
             return {
                 title: `${title ?? '[ Gallery Block ]'} ( ${media.length} )`,
-                media: media[0].media ?? null
+                media: media[0] ?? null
             }
         }
     },
@@ -27,22 +27,20 @@ export const galleryBlockType = defineType({
             type: 'array',
             of: [
                 defineArrayMember({
-                    type: 'object',
-                    name: 'mediaItem',
-                    title: 'Media',
+                    type: 'image',
+                    name: 'media',
+                    title: 'Media File',
+                    options: {
+                        hotspot: true,
+                    },
                     fields: [
-                        {
-                            type: 'image',
-                            name: 'media',
-                            title: 'Media File',
-                            validation: Rule => Rule.required()
-                        },
                         {
                             type: 'string',
                             name: 'caption',
                             title: 'Caption',
                         },
-                    ]
+                    ],
+                    validation: Rule => Rule.required(),
                 })
             ]
         }
