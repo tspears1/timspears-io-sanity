@@ -47,6 +47,22 @@ export const projectType = defineType({
             validation: Rule => Rule.required(),
             group: 'basics',
         }),
+        {
+            name: 'heroSize',
+            title: 'Hero Size',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'SM', value: 'sm' },
+                    { title: 'MD', value: 'md' },
+                    { title: 'LG', value: 'lg' },
+                ],
+                layout: 'radio',
+                direction: 'horizontal',
+            },
+            initialValue: 'large',
+            group: 'basics',
+        },
         { ...slug, group: 'basics' },
         {
             name: 'client',

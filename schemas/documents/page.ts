@@ -30,6 +30,22 @@ export const pageType = defineType({
             validation: (rule) => rule.required(),
             group: 'basics',
         }),
+        {
+            name: 'heroSize',
+            title: 'Hero Size',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'SM', value: 'sm' },
+                    { title: 'MD', value: 'md' },
+                    { title: 'LG', value: 'lg' },
+                ],
+                layout: 'radio',
+                direction: 'horizontal',
+            },
+            initialValue: 'large',
+            group: 'basics',
+        },
         { ...slug, group: 'basics' },
         { ...eyebrow, group: 'basics' },
         defineField({
