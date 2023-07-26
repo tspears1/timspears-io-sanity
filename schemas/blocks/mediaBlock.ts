@@ -30,6 +30,7 @@ export const mediaBlockType = defineType({
                 list: [
                     { title: 'Grid', value: 'grid' },
                     { title: 'Full Viewport', value: 'full' },
+                    { title: 'Video Player', value: 'video' },
                 ],
                 layout: 'radio',
                 direction: 'horizontal',
@@ -56,7 +57,7 @@ export const mediaBlockType = defineType({
                         prepare: ({ type, media, size, ratio, video }) => {
                             const caption = media?.caption ?? video?.caption ?? '{ Untitled }'
                             return {
-                                title: `[ ${rTitle(type)} ] [ ${rTitle(size)} ] [ ${rTitle(ratio)}] ${caption}`,
+                                title: `[ ${rTitle(type)} ] [ ${rTitle(size)} ] [ ${rTitle(ratio)} ] ${caption}`,
                                 media: media ?? video?.poster ?? undefined
                             }
                         }
@@ -83,6 +84,7 @@ export const mediaBlockType = defineType({
                             title: 'Image Media',
                             options: {
                                 hotspot: true,
+                                accept: 'image/*'
                             },
                             fields: [
                                 {
@@ -103,7 +105,7 @@ export const mediaBlockType = defineType({
                                 }
                                 return true
                             }),
-                            hidden: ({ parent }) => parent?.mediaType !== 'image'
+                            hidden: ({ parent }) => parent?.mediaType !== 'image',
                         }),
                         defineField({
                             type: 'file',
