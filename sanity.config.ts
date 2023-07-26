@@ -5,6 +5,7 @@ import {RobotIcon} from '@sanity/icons'
 import {media} from 'sanity-plugin-media'
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash"
 import { colorInput } from "@sanity/color-input"
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 
 import { pageStructure, singletonPlugin } from './plugins/settings'
 
@@ -35,5 +36,6 @@ export default defineConfig({
     visionTool(),
     colorInput(),
     unsplashImageAsset(),
+    vercelDeployTool(),
   ],
 })

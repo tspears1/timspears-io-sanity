@@ -50,20 +50,37 @@ export const mediaBlockType = defineType({
                             size: 'spacing',
                             ratio: 'ratio',
                             media: 'media',
+                            video: 'video',
+                            type: 'mediaType'
                         },
-                        prepare: ({ media, size, ratio }) => {
-                            const caption = media.caption ?? '{ Untitled }'
+                        prepare: ({ type, media, size, ratio, video }) => {
+                            const caption = media?.caption ?? video?.caption ?? '{ Untitled }'
                             return {
-                                title: `[ ${rTitle(size)} ] [ ${rTitle(ratio)}] ${caption}`,
-                                media: media
+                                title: `[ ${rTitle(type)} ] [ ${rTitle(size)} ] [ ${rTitle(ratio)}] ${caption}`,
+                                media: media ?? video?.poster ?? undefined
                             }
                         }
                     },
                     fields: [
                         defineField({
+                            type: 'string',
+                            name: 'mediaType',
+                            title: 'Media Type',
+                            options: {
+                                list: [
+                                    { title: 'Image', value: 'image' },
+                                    { title: 'Video', value: 'video' },
+                                ],
+                                layout: 'radio',
+                                direction: 'horizontal',
+                            },
+                            initialValue: 'image',
+                            validation: Rule => Rule.required()
+                        }),
+                        defineField({
                             type: 'image',
                             name: 'media',
-                            title: 'Media File',
+                            title: 'Image Media',
                             options: {
                                 hotspot: true,
                             },
@@ -79,7 +96,47 @@ export const mediaBlockType = defineType({
                                     title: 'Attribution',
                                 }
                             ],
-                            validation: Rule => Rule.required()
+                            validation: (Rule) => Rule.custom((currentValue, { document }) => {
+                                const { mediaType } = document
+                                if (mediaType === 'image') {
+                                    return currentValue?.asset?._ref ? true : 'Image is required.'
+                                }
+                                return true
+                            }),
+                            hidden: ({ parent }) => parent?.mediaType !== 'image'
+                        }),
+                        defineField({
+                            type: 'file',
+                            name: 'video',
+                            title: 'Video Media',
+                            fields: [
+                                {
+                                    name: 'caption',
+                                    type: 'string',
+                                    title: 'Caption',
+                                },
+                                {
+                                    name: 'attribution',
+                                    type: 'string',
+                                    title: 'Attribution',
+                                },
+                                {
+                                    name: 'poster',
+                                    type: 'image',
+                                    title: 'Poster',
+                                },
+                            ],
+                            validation: (Rule) => Rule.custom((currentValue, { document }) => {
+                                const { mediaType } = document
+                                if (mediaType === 'video') {
+                                    return currentValue?.asset?._ref ? true : 'Video is required.'
+                                }
+                                return true
+                            }),
+                            hidden: ({ parent }) => parent?.mediaType !== 'video',
+                            options: {
+                                accept: 'video/*'
+                            }
                         }),
                         defineField({
                             type: 'string',
