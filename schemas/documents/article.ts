@@ -1,5 +1,6 @@
 import { defineType, defineField, defineArrayMember } from 'sanity'
-import { HomeIcon } from '@sanity/icons'
+import {BulbOutlineIcon} from '@sanity/icons'
+import slug from '../fields/slug'
 import theme from '../fields/_theme'
 import eyebrow from '../fields/_eyebrow'
 import {introBlockType as introBlock} from '../blocks/introBlock'
@@ -8,15 +9,12 @@ import {textHeadingBlockType as textHeadingBlock} from '../blocks/textHeadingBlo
 import {mediaBlockType as mediaBlock} from '../blocks/mediaBlock'
 import {awardsBlockType as awardsBlock} from '../blocks/awardsBlock'
 import {galleryBlockType as galleryBlock} from '../blocks/galleryBlock'
-import { featuredBlockType as featuredBlock } from '../blocks/featuredBlock'
-import { servicesBlockType as servicesBlock } from '../blocks/servicesBlock'
 
-
-export const homeType = defineType({
-    name: 'home',
-    title: 'Homepage',
+export const articleType = defineType({
+    name: 'article',
+    title: 'Article',
     type: 'document',
-    icon: HomeIcon,
+    icon: BulbOutlineIcon,
     groups: [
         {
             name: 'basics',
@@ -39,6 +37,22 @@ export const homeType = defineType({
         }),
         { ...eyebrow, group: 'basics' },
         { ...theme, group: 'basics' },
+        { ...slug, group: 'basics' },
+        defineField({
+            name: 'date',
+            title: 'Date',
+            type: 'date',
+            validation: (rule) => rule.required(),
+            group: 'basics',
+        }),
+        defineField({
+            name: 'abstract',
+            title: 'Abstract',
+            type: 'text',
+            rows: 3,
+            validation: (rule) => rule.required(),
+            group: 'basics',
+        }),
 
         // Content Group =======================================
         defineField({
@@ -52,11 +66,8 @@ export const homeType = defineType({
                 defineArrayMember(mediaBlock),
                 defineArrayMember(galleryBlock),
                 defineArrayMember(awardsBlock),
-                defineArrayMember(featuredBlock),
-                defineArrayMember(servicesBlock),
             ],
             group: 'content',
         }),
-    ],
-
+    ]
 })

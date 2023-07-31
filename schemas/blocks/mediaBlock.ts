@@ -16,7 +16,7 @@ export const mediaBlockType = defineType({
         prepare: ({ title, media }) => {
             return {
                 title: `${title ?? '[ Media Block ]'} ( ${media.length} )`,
-                media: media[0].media
+                media: media[0].media || media[0].video?.poster
             }
         }
     },
@@ -127,6 +127,11 @@ export const mediaBlockType = defineType({
                                     type: 'image',
                                     title: 'Poster',
                                 },
+                                {
+                                    name: 'background',
+                                    type: 'color',
+                                    title: 'Background Color',
+                                }
                             ],
                             validation: (Rule) => Rule.custom((currentValue, { document }) => {
                                 const { mediaType } = document
