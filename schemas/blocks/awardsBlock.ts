@@ -14,6 +14,20 @@ export const awardsBlockType = defineType({
     },
     fields: [
         defineField(sectionHeading),
+        defineField({
+            type: 'string',
+            name: 'sectionTheme',
+            title: 'Section Theme',
+            options: {
+                list: [
+                    { title: 'Light', value: 'light' },
+                    { title: 'Dark', value: 'dark' },
+                ],
+                layout: 'radio',
+                direction: 'horizontal',
+            },
+            initialValue: 'light',
+        }),
         {
             type: 'array',
             name: 'awardsList',
