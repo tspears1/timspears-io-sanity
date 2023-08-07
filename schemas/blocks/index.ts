@@ -6,6 +6,7 @@ import { mediaBlockType } from "./mediaBlock"
 import { servicesBlockType } from "./servicesBlock"
 import { textBlockType } from "./textBlock"
 import { textHeadingBlockType } from "./textHeadingBlock"
+import { toolBlockType } from "./toolBlock"
 
 export const blockTypes = [
     awardsBlockType,
@@ -16,4 +17,5 @@ export const blockTypes = [
     servicesBlockType,
     textBlockType,
     textHeadingBlockType,
+    toolBlockType,
 ]

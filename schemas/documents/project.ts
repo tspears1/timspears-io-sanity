@@ -11,6 +11,7 @@ import {mediaBlockType as mediaBlock} from '../blocks/mediaBlock'
 import {awardsBlockType as awardsBlock} from '../blocks/awardsBlock'
 import {galleryBlockType as galleryBlock} from '../blocks/galleryBlock'
 import {featuredImageType as featuredImage} from '../objects/featuredImage'
+import { toolBlockType as toolBlock } from '../blocks/toolBlock'
 
 export const projectType = defineType({
     name: 'project',
@@ -142,6 +143,7 @@ export const projectType = defineType({
                 defineArrayMember(mediaBlock),
                 defineArrayMember(galleryBlock),
                 defineArrayMember(awardsBlock),
+                defineArrayMember(toolBlock),
             ],
             group: 'content',
         }),

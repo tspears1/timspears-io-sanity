@@ -10,6 +10,7 @@ import {awardsBlockType as awardsBlock} from '../blocks/awardsBlock'
 import {galleryBlockType as galleryBlock} from '../blocks/galleryBlock'
 import { featuredBlockType as featuredBlock } from '../blocks/featuredBlock'
 import { servicesBlockType as servicesBlock } from '../blocks/servicesBlock'
+import { toolBlockType as toolBlock } from '../blocks/toolBlock'
 
 
 export const homeType = defineType({
@@ -54,6 +55,7 @@ export const homeType = defineType({
                 defineArrayMember(awardsBlock),
                 defineArrayMember(featuredBlock),
                 defineArrayMember(servicesBlock),
+                defineArrayMember(toolBlock),
             ],
             group: 'content',
         }),
