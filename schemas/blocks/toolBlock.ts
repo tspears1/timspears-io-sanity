@@ -66,6 +66,7 @@ export const toolBlockType = defineType({
                             options: {
                                 list: [
                                     { title: 'Anime.js', value: 'anime-js' },
+                                    { title: 'Atipo', value: 'atipo' },
                                     { title: 'Form Kit', value: 'form-kit' },
                                     { title: 'Framer Motion', value: 'framer-motion' },
                                     { title: 'Gatsby', value: 'gatsby' },
