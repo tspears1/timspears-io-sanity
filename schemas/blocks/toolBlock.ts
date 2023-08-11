@@ -81,6 +81,7 @@ export const toolBlockType = defineType({
                                     { title: 'Sanity', value: 'sanity' },
                                     { title: 'Sass', value: 'sass' },
                                     { title: 'Splide', value: 'splide' },
+                                    { title: 'Strapi', value: 'strapi' },
                                     { title: 'Vite', value: 'vite' },
                                     { title: 'VueUse', value: 'vue-use' },
                                     { title: 'Vue 3', value: 'vue' },
