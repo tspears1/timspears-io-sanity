@@ -10,6 +10,7 @@ import {textHeadingBlockType as textHeadingBlock} from '../blocks/textHeadingBlo
 import {mediaBlockType as mediaBlock} from '../blocks/mediaBlock'
 import {awardsBlockType as awardsBlock} from '../blocks/awardsBlock'
 import {galleryBlockType as galleryBlock} from '../blocks/galleryBlock'
+import {headshotBlockType as headshotBlock} from '../blocks/headshotBlock'
 import { servicesBlockType as servicesBlock } from '../blocks/servicesBlock'
 import thoughtsIndex from '../templates/_thoughts-index'
 import { featuredBlockType as featuredBlock } from '../blocks/featuredBlock'
@@ -95,6 +96,7 @@ export const pageType = defineType({
                 defineArrayMember(awardsBlock),
                 defineArrayMember(servicesBlock),
                 defineArrayMember(featuredBlock),
+                defineArrayMember(headshotBlock),
             ],
             group: 'content',
             hidden: ({ document }) => !allowContentDesigner.includes( document?.pageTemplate as string ),
