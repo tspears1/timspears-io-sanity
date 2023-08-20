@@ -24,7 +24,7 @@ export const contentSimpleType = defineType({
                     {
                         title: 'Strong',
                         value: 'strong'
-                    }
+                    },
                 ]
             }
         })

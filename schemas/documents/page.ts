@@ -14,6 +14,7 @@ import {headshotBlockType as headshotBlock} from '../blocks/headshotBlock'
 import { servicesBlockType as servicesBlock } from '../blocks/servicesBlock'
 import thoughtsIndex from '../templates/_thoughts-index'
 import { featuredBlockType as featuredBlock } from '../blocks/featuredBlock'
+import { philosophyBlockType } from '../blocks/philosophyBlock'
 
 const allowContentDesigner : string[] = [
     'about-template',
@@ -97,6 +98,7 @@ export const pageType = defineType({
                 defineArrayMember(servicesBlock),
                 defineArrayMember(featuredBlock),
                 defineArrayMember(headshotBlock),
+                defineArrayMember(philosophyBlockType),
             ],
             group: 'content',
             hidden: ({ document }) => !allowContentDesigner.includes( document?.pageTemplate as string ),
